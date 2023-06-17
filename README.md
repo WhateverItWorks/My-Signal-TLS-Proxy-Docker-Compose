@@ -1,5 +1,5 @@
 # Signal TLS Proxy
-Help people in Iran reconnect to Signal – a request to our community
+Help people in Iran reconnect to Signal
 
 To run a Signal TLS proxy, you will need a host that has ports 80 and 443 available and a domain name that points to that host.
 
