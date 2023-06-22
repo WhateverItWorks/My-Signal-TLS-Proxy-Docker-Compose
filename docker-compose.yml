@@ -1,9 +1,11 @@
-version: '3'
+version: '3.7'
 
 services:
   nginx-terminate:
     build: ./nginx-terminate/
-    restart: unless-stopped
+    restart: always
+    security_opt:
+      - no-new-privileges:true
     volumes:
       - ./data/nginx-terminate:/etc/nginx/conf.d
       - ./data/certbot/conf:/etc/letsencrypt
@@ -12,15 +14,21 @@ services:
       - "443:443"
       - "80:80"
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; /opt/nginx/sbin/nginx -s reload; done & /opt/nginx/sbin/nginx -c /etc/nginx/conf.d/nginx.conf -g \"daemon off;\"'"
+    
   nginx-relay:
     build: ./nginx-relay/
-    restart: unless-stopped
+    restart: always
+    security_opt:
+      - no-new-privileges:true
     volumes:
       - ./data/nginx-relay:/etc/nginx/conf.d
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; /opt/nginx/sbin/nginx -s reload; done & /opt/nginx/sbin/nginx -c /etc/nginx/conf.d/nginx.conf -g \"daemon off;\"'"
+    
   certbot:
-    image: certbot/certbot
-    restart: unless-stopped
+    image: certbot/certbot:latest
+    restart: always
+    security_opt:
+      - no-new-privileges:true
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
