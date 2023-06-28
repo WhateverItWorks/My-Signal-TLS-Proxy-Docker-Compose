@@ -1,6 +1,11 @@
 # Signal TLS Proxy
 Help people in Iran reconnect to Signal
 
+### Install Certbot
+```
+sudo apt install python3-certbot-nginx
+```
+
 To run a Signal TLS proxy, you will need a host that has ports 80 and 443 available and a domain name that points to that host.
 
 ``` https://signal.org/blog/run-a-proxy/ ```
