@@ -20,3 +20,4 @@ docker-compose up -d
 ### Advanced
 
 - [Enable Google TCP BBR](https://www.linuxbabe.com/ubuntu/enable-google-tcp-bbr-ubuntu)
+- [Upgrade from NGINX 1.18.0](https://nginx.org/download/)
